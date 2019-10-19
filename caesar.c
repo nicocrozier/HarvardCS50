@@ -9,10 +9,10 @@ string get_user_input(string prompt);
 
 int main(int argc, string argv[])
 {
-
+    
     // Blank string that will be updated to Success or Failure
     int SF = 1;
-
+   
 
     // Checks if a key is supplied
     if (argc == 2)
@@ -38,7 +38,7 @@ int main(int argc, string argv[])
                     SF = 0;
                     // Stops the for loop and exits loops
                     j = 10000;
-
+                    
                 }
             }
         }
@@ -51,53 +51,53 @@ int main(int argc, string argv[])
     // Prints Success or Failure
     //printf("%s",SF);
 
+    
 
-
-
-
+    
+    
     if (SF == 1)
     {
         // Converts string to int
         int KEY;
         KEY = atoi(argv[1]);
-
-
-
+        
+        
+        
         // Prompt User for Message, where plaintext = the user input
         string plaintext = get_user_input("plaintext: ");
-
-        printf("cipertext: ");
-        // Loops through each individual char in "plaintext"
+        
+        printf("ciphertext: ");
+        // Loops through each individual char in "plaintext" 
         for (int k = 0, w = strlen(plaintext); k < w; k++)
         {
-
+            
             if (islower(plaintext[k]))
             {
                 printf("%c", (plaintext[k] - 'a' + KEY) % 26 + 'a');
-
+               
             }
-             else if (isupper(plaintext[k]))
+            else if (isupper(plaintext[k]))
             {
                 printf("%c", (plaintext[k] - 'A' + KEY) % 26 + 'A');
-
+               
             }
-             else
+            else
             {
                 printf("%c", plaintext[k]);
             }
-
+            
         }
         printf("\n");
-
+        
     }
     else
     {
         printf("Usage: ./caesar\n");
     }
-
-
-
-
+    
+    
+    
+    
 
 
 
@@ -105,14 +105,12 @@ int main(int argc, string argv[])
 
 // Keep prompting the user for plaintext if they do not type anything
 string get_user_input(string prompt)
+{
+    string n;
+    do
     {
-        string n;
-        do
-        {
-            n = get_string("%s", prompt);
-
-
-        }
-        while (n <= 0);
-        return n;
+        n = get_string("%s", prompt);
     }
+    while (n <= 0);
+    return n;
+}
